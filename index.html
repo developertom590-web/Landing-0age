@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikachu App | Gotta Catch 'Em All</title>
+    <!-- Google Fonts for a modern and playful look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pika-yellow: #FFCB05;
+            --pika-blue: #00ADEF;
+            --pika-red: #F62D14;
+            --pika-black: #2D2D2D;
+            --pika-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--pika-yellow);
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        /* --- LOADING SCREEN --- */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: var(--pika-yellow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+
+        .loader-logo {
+            width: 150px;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .loading-bar-container {
+            width: 200px;
+            height: 10px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--pika-red);
+            transition: width 0.1s linear;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- MAIN CONTENT --- */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        .app-logo {
+            width: 250px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--pika-black);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .download-btn {
+            background-color: var(--pika-red);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            box-shadow: 0 10px 20px rgba(246, 45, 20, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            background-color: #d62210;
+            box-shadow: 0 15px 30px rgba(246, 45, 20, 0.4);
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--pika-blue);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .app-logo { width: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <img src="https://pngimg.com/uploads/pikachu/pikachu_PNG32.png" alt="Pikachu" class="loader-logo">
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="progress"></div>
+        </div>
+        <p style="margin-top: 15px; font-weight: bold; color: var(--pika-black);">Loading Adventures...</p>
+    </div>
+
+    <!-- Main Landing Page -->
+    <div id="main-content">
+        <div class="hero-section">
+            <img src="https://pngimg.com/uploads/pikachu/pikachu_PNG32.png" alt="Pikachu App" class="app-logo">
+            <h1>Pikachu Explorer</h1>
+            <p>The ultimate companion app for Trainers. Track, train, and battle your way to the top with your favorite Electric-type buddy.</p>
+            
+            <a href="#" class="download-btn" id="downloadBtn">Download Now</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Real-time Radar</h3>
+                <p>Find nearby buddies in an instant using our lightning-fast radar.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Evolution Guide</h3>
+                <p>Learn the best tactics to power up and evolve your team.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Daily Rewards</h3>
+                <p>Log in every day to claim exclusive Thunder Stones and treats.</p>
+            </div>
+        </div>
+
+        <footer style="margin-top: 80px; color: #666; font-size: 0.9rem;">
+            &copy; 2024 Pikachu App Fan Project. All characters are trademarks of Nintendo.
+        </footer>
+    </div>
+
+    <script>
+        // Simulation of loading progress
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress');
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    
+                    // Hide loader and show content
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    
+                    mainContent.style.opacity = '1';
+                } else {
+                    width += Math.random() * 15; // Random increment for "realistic" feel
+                    if (width > 100) width = 100;
+                    progressBar.style.width = width + '%';
+                }
+            }, 150);
+        });
+
+        // Simple button interaction
+        document.getElementById('downloadBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Pika-pika! Your download is starting...");
+        });
+    </script>
+</body>
+</html>
